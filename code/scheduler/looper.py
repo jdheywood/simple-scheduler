@@ -3,20 +3,20 @@ from datetime import timedelta
 
 from timeloop import Timeloop
 
-from code.data_access.commands import update_job_is_running_by_job_name
-from code.data_access.queries import (
+from data_access.commands import update_job_is_running_by_job_name
+from data_access.queries import (
     get_all_jobs,
     get_enabled_jobs_by_interval,
     get_running_jobs,
 )
-from code.jobs import (
+from jobs import (
     HeartbeatJob,
     HelloWorldJob,
 )
-from code.logging.configure import get_logger
+from utils.logging.configure import get_logger
 
 # from code.process.daemon import Daemon # make Looper inherit from this to fork the process and daemonize the scheduler
-from code.process.angel import Angel # otherwise use a standard process
+from process.angel import Angel # otherwise use a standard process
 
 # Configure and create our logger
 logger = get_logger()
@@ -27,14 +27,16 @@ tl = Timeloop()
 # Define outside class so they are accessible by helper functions
 job_classes = {
     'heartbeat': HeartbeatJob,
-    'hello_world': HelloWorldJob,
+    'helloworld': HelloWorldJob,
 }
 
 
-def _try_job(job_classes, model, interval):
-    logger.info('Instantiating the right class for the job, via the job_name')
+def _try_job(model, interval):
+    try:
+        cls = job_classes[model.name]
+    except KeyError:
+        raise Exception('No class found for job name')
 
-    cls = job_classes(model.name)
     if not cls:
         raise Exception('No class found for job name')
 
@@ -60,6 +62,7 @@ class Looper(Angel):
 
         self._frequencies = [
             '1 seconds',
+            '10 seconds',
             '30 seconds',
             '1 minutes',
             '5 minutes',
@@ -71,7 +74,13 @@ class Looper(Angel):
     @tl.job(interval=timedelta(seconds=1))
     def _every_30_seconds():
         for model in get_enabled_jobs_by_interval(1, 'seconds'):
-            _try_job(model, '30secs')
+            _try_job(model, '1secs')
+
+    @staticmethod
+    @tl.job(interval=timedelta(seconds=10))
+    def _every_30_seconds():
+        for model in get_enabled_jobs_by_interval(10, 'seconds'):
+            _try_job(model, '10secs')
 
     @staticmethod
     @tl.job(interval=timedelta(seconds=30))

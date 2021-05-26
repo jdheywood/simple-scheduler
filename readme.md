@@ -33,14 +33,23 @@ $ pip install -r requirements.txt
 Successfully installed ...
 ```
 
-### Run tests
+### Run the tests
 
 ```bash
-$ nosetests --verbose --nocapture --rednose
+$ nosetests -w code --verbose --nocapture --rednose
 ```
 
-## TODO
+## Run the scheduler
 
-TDD the code!
+```bash
+cd code
+PYTHONPATH=$PYTHONPATH:$(pwd) python scheduler/control.py start
+```
 
-Add your notes on approach/setup etc here as you go, tidy up later.
+This code allows the scheduling of repeating jobs on pre-defined frequencies.
+
+It makes us of the timeloop package to start jobs on a recurring interval (if the jobs are not still running since the last execution). To manage this, job metadata is serialised to a json file.
+
+The jobs can be set to run on a background thread, if the Looper class inherits from the Daemon process class. To run the jobs in the main thread Looper should inherit from the Angel process class.
+
+For deploying to a remote environment (such as production for example) it would be wise to manage the scheduler via some form of process manager such as supervisor for example.

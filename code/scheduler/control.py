@@ -1,8 +1,9 @@
 import sys
 
-from .logging.configure import get_logger
+from utils.logging.configure import get_logger
 
-from .looper import Looper
+from scheduler.looper import Looper
+
 
 
 # Configure and create our logger
@@ -36,6 +37,6 @@ if __name__ == "__main__":
     # pylint: disable=pointless-string-statement
     '''
     cd code
-    PYTHONPATH=$PYTHONPATH:$(pwd) python scheduler/control.py start|stop|restart
+    PYTHONPATH=$PYTHONPATH:$(pwd) python code/control.py start|stop|restart
     '''
     main()

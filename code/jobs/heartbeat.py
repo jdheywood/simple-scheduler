@@ -1,4 +1,4 @@
-from code.jobs.base import BaseJob
+from jobs.base import BaseJob
 
 
 class HeartbeatJob(BaseJob):

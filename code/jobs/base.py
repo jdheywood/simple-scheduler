@@ -1,8 +1,8 @@
 import abc
 from datetime import datetime
 
-from code.utils.exceptions import ScheduledJobException
-from code.data_access.queries import get_job_by_name
+from utils.exceptions import ScheduledJobException
+from data_access.queries import get_job_by_name
 
 
 class BaseJob(abc.ABC):

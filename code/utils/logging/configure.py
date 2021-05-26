@@ -7,8 +7,6 @@ def get_logger(default_path='logging-config.json'):
     """
     Setup logging configuration.
 
-    For staging and production environments also configures to drain to logDNA.
-
     Returns logger for use in your code.
     """
     _configure_logging(default_path)
