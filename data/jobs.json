@@ -1,0 +1,15 @@
+{
+    "jobs": [
+        {
+            "id": 1,
+            "name": "heartbeat",
+            "interval_value": 1,
+            "interval_name": "minutes",
+            "is_running": false,
+            "last_executed": null,
+            "last_outcome": null,
+            "exception": null,
+            "enabled": true
+        }
+    ]
+}

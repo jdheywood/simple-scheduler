@@ -1,0 +1,10 @@
+pyvenv.cfg
+bin/
+venv/
+lib/
+.DS_Store
+*.swp
+*.pyc
+*.retry
+code/__pycache__/
+tests/__pycache__/
