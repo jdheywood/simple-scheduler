@@ -52,7 +52,7 @@ It makes us of the [timeloop](https://pypi.org/project/timeloop/) package to sta
 
 The jobs can be set to run on a background thread, if the `Looper` class inherits from the `Daemon` process class. To run the jobs in the main thread `Looper` should inherit from the `Angel` process class.
 
-For deploying to a remote environment (such as production for example) it would be wise to manage the scheduler via some form of process manager such as `supervisor` for example.
+For deploying to a remote environment (such as production for example) it would be wise to manage the scheduler via some form of process manager such as [supervisor](http://supervisord.org/index.html) for example.
 
 ## Further control of Daemonised Looper
 
