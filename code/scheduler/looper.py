@@ -137,7 +137,7 @@ class Looper(Angel):
 
         for job in get_running_jobs():
             logger.info('Resetting job %s', job.name)
-            update_job_is_running_by_job_name(job.name)
+            update_job_is_running_by_job_name(job.name, False)
 
         logger.info('--------------------------------------')
         logger.info('Starting up Looper...')

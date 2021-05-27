@@ -2,6 +2,11 @@ import abc
 from datetime import datetime
 
 from utils.exceptions import ScheduledJobException
+from data_access.commands import(
+    update_job_when_started_by_name,
+    update_job_when_successful_by_name,
+    update_job_when_failed_by_name,
+) 
 from data_access.queries import get_job_by_name
 
 
@@ -40,5 +45,3 @@ class BaseJob(abc.ABC):
         self.model.is_running = False
         self.model.last_outcome = 'failed'
         self.model.exception = repr(exception)
-
-        send_notification('Job {} failed, please investigate'.format(self.model.name), 'Scheduled job alert')
