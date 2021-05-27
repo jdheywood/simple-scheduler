@@ -1,5 +1,5 @@
 """
-Generic linux daemon base class for python 3.x.
+Generic linux process base class for python 3.x.
 """
 
 
@@ -8,7 +8,8 @@ class Angel():
     A generic non-daemon process class.
     Usage: subclass Angel and override the run() method.
 
-    Written to swap out for Daemon used by Looper due to background threads being unable to log to LogDNA
+    Written to swap out for Daemon used by Looper due to issue accessing ENV 
+    and 3rd party libs from background threads in some environments
     """
 
     def __init__(self, pidfile):
