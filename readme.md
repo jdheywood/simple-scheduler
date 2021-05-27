@@ -44,6 +44,34 @@ $ nosetests -w code --verbose --nocapture --rednose
 ```bash
 cd code
 PYTHONPATH=$PYTHONPATH:$(pwd) python scheduler/control.py start
+
+2021-05-27 08:26:12,749 - root - INFO - **********************************
+2021-05-27 08:26:12,749 - root - INFO - starting process
+2021-05-27 08:26:12,750 - root - INFO - --------------------------------------
+2021-05-27 08:26:12,750 - root - INFO - Looper supports the following frequencies:
+2021-05-27 08:26:12,750 - root - INFO - 1 seconds
+2021-05-27 08:26:12,750 - root - INFO - 10 seconds
+2021-05-27 08:26:12,750 - root - INFO - 30 seconds
+2021-05-27 08:26:12,751 - root - INFO - 1 minutes
+2021-05-27 08:26:12,751 - root - INFO - 5 minutes
+2021-05-27 08:26:12,751 - root - INFO - 1 hours
+2021-05-27 08:26:12,751 - root - INFO - 1 days
+2021-05-27 08:26:12,751 - root - INFO - --------------------------------------
+2021-05-27 08:26:12,753 - root - INFO - Looper is aware of the following ENABLED jobs:
+2021-05-27 08:26:12,753 - root - INFO - heartbeat, scheduled every: (1 minutes)
+2021-05-27 08:26:12,753 - root - INFO - helloworld, scheduled every: (10 seconds)
+2021-05-27 08:26:12,753 - root - DEBUG - --------------------------------------
+2021-05-27 08:26:12,753 - root - DEBUG - Looper is aware of the following DISABLED jobs:
+2021-05-27 08:26:12,753 - root - DEBUG - dailything, scheduled every: (1 days)
+2021-05-27 08:26:12,754 - root - INFO - --------------------------------------
+2021-05-27 08:26:12,754 - root - INFO - Looking for jobs left in running state
+2021-05-27 08:26:12,754 - root - INFO - --------------------------------------
+2021-05-27 08:26:12,754 - root - INFO - Starting up Looper...
+2021-05-27 08:26:22,758 - root - INFO - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2021-05-27 08:26:22,760 - root - INFO - Starting 10secs Job helloworld...
+
+2021-05-27 08:26:22,763 - root - INFO - Hello world :-)
+...
 ```
 
 This code allows the scheduling of repeating jobs on pre-defined frequencies.
