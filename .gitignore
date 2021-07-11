@@ -8,3 +8,4 @@ lib/
 *.retry
 code/__pycache__/
 tests/__pycache__/
+.vscode/
